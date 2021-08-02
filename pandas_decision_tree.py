@@ -2,6 +2,7 @@ import pandas as pd
 from dataclasses import dataclass
 from typing import List, Any, NamedTuple
 import math
+from data_cleaning import age_category
 
 @dataclass
 class Branch:
@@ -21,9 +22,6 @@ class PandasDecisionTree():
     leaf: Any = None
     
     
-
-
-
 
     '''ENTROPY CALCULATIONS'''
     def entropy(self, dataframe = None) -> float:
@@ -176,27 +174,6 @@ class PandasDecisionTree():
             
 
 
-
-    
-
-
-
-
-
-df = pd.read_csv('./phpMYEkMl.csv')
-
-
-tree = PandasDecisionTree(df, ['pclass', 'sex', 'age', 'sibsp', 'parch', 'embarked', 'cabin'], 'survived')
-
-train, test = tree.split_data(.75)
-
-#intialize Decision Tree with train data
-train_frame = PandasDecisionTree(train, ['pclass', 'sex', 'age', 'sibsp', 'parch', 'embarked', 'cabin'], 'survived')
-#train the model
-train_frame.train()
-
-# Test the model
-print(train_frame.test(test))
 
 
 
